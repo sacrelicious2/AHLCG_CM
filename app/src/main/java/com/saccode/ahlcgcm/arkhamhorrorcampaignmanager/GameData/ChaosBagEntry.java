@@ -17,11 +17,6 @@ public class ChaosBagEntry {
         return count;
     }
 
-
-    public int getCount() {
-        return count;
-    }
-
     private String token;
 
     public void setCount(int count) {
