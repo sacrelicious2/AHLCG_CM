@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Arkham Horror Campaign Manager</string>
+    <string name="action_settings">Settings</string>
+    <string name="create_campaign">Create Campaign</string>
+    <string name="delete_campaign">Delete Campaign?</string>
+    <string name="title_activity_campaign">CampaignActivity</string>
+    <string name="add_investigator">Add Investigator</string>
+</resources>
