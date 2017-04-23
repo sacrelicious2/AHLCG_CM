@@ -5,4 +5,6 @@
     <string name="delete_campaign">Delete Campaign?</string>
     <string name="title_activity_campaign">CampaignActivity</string>
     <string name="add_investigator">Add Investigator</string>
+    <string name="investigators">Investigators</string>
+    <string name="completed_scenarios">Completed Scenarios</string>
 </resources>

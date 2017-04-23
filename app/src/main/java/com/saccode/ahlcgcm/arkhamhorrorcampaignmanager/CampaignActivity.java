@@ -8,7 +8,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ExpandableListView;
-import android.widget.ListView;
 
 import com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.SaveData.CampaignState;
 import com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.SaveData.SaveData;
@@ -44,14 +43,14 @@ public class CampaignActivity extends AppCompatActivity
 
         if (mCurrentCampaignState != null)
         {
-            toolbar.setTitle(mCurrentCampaignState.getCustomName());
+            toolbar.setTitle(mCurrentCampaignState.getName());
             toolbar.setSubtitle(mCurrentCampaignState.getCampaignName());
         }
 
         setSupportActionBar(toolbar);
 
-        ListView investigatorsListView = (ListView) findViewById(R.id.investigators_list);
-        InvestigatorListAdapter investigatorListAdapter = new InvestigatorListAdapter(this, mCurrentCampaignState.getInvestigatorStates());
+        ExpandableListView investigatorsListView = (ExpandableListView) findViewById(R.id.campaign_list_view);
+        CampaignStateAdapter investigatorListAdapter = new CampaignStateAdapter(this, mCurrentCampaignState);
         mCurrentCampaignState.setInvestigatorListListener(investigatorListAdapter);
         investigatorsListView.setAdapter(investigatorListAdapter);
 

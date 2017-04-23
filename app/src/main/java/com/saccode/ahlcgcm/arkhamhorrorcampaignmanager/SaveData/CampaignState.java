@@ -1,9 +1,8 @@
 package com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.SaveData;
 
+import com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.GameData.CampaignInfo;
+
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Paul Burg on 4/21/2017.
@@ -16,12 +15,16 @@ public class CampaignState {
         public void onUpdateInvestigatorList();
     }
 
-    public CampaignState(CharSequence campaignName, CharSequence customName)
+    public CampaignState(CharSequence campaignName, CampaignInfo campaignInfo)
     {
-        this.campaignName = campaignName.toString();
-        this.customName = customName.toString();
-        investigatorStates = new ArrayList<InvestigatorState>();
-        campaignLog = new HashMap<CharSequence, List<CharSequence>>();
+        this.name = campaignName.toString();
+        this.campaignInfo = campaignInfo;
+        investigatorStates = new ArrayList<>();
+        campaignLogLists = new ArrayList<>();
+        for (int iCampaignLogList = 0; iCampaignLogList < campaignInfo.campaignLogLists.size(); ++iCampaignLogList)
+        {
+            campaignLogLists.add(new ArrayList<String>());
+        }
     }
 
     public void addInvestigator(CharSequence investigatorName, CharSequence playerName)
@@ -33,26 +36,69 @@ public class CampaignState {
     public ArrayList<InvestigatorState> getInvestigatorStates(){
         return investigatorStates;
     }
-
-    public CharSequence getCampaignName() {
-        return campaignName;
+    public InvestigatorState getInvestigatorState(int index)
+    {
+        if (index < investigatorStates.size())
+        {
+            return investigatorStates.get(index);
+        }
+        return null;
     }
 
-    public CharSequence getCustomName() {
-        return customName;
+    public CharSequence getName() {
+        return name;
     }
 
-    public void setCustomName(CharSequence customName) {
-        this.customName = customName.toString();
-    }
+    public CharSequence getCampaignName() {return campaignInfo.name;}
 
-    private String customName;
-    private String campaignName;
+    private String name;
+    private CampaignInfo campaignInfo;
     private ArrayList<InvestigatorState> investigatorStates;
-    private Map<CharSequence, List<CharSequence>> campaignLog;
+    private ArrayList<ArrayList<String>> campaignLogLists;
 
     public void setInvestigatorListListener(InvestigatorListListener investigatorListListener) {
         this.investigatorListListener = investigatorListListener;
+    }
+
+    public int getCampaignLogListCount()
+    {
+        return campaignInfo.campaignLogLists.size();
+    }
+
+    public int getCampaignLogListSize(int index)
+    {
+        if (index < campaignLogLists.size())
+        {
+            return campaignLogLists.get(index).size();
+        }
+        return 0;
+    }
+
+    public CharSequence getCampaignLogEvent(int logIndex, int eventIndex)
+    {
+        if (logIndex < campaignLogLists.size())
+        {
+            ArrayList<String> log = campaignLogLists.get(logIndex);
+            if (eventIndex < log.size())
+            {
+                return log.get(eventIndex);
+            }
+        }
+        return null;
+    }
+
+    public CharSequence getCampaignLogName(int logIndex)
+    {
+        if (logIndex < campaignInfo.campaignLogLists.size())
+        {
+            return campaignInfo.campaignLogLists.get(logIndex);
+        }
+        return "**INVALID CAMPAIGN LOG NAME**";
+    }
+
+    public int getInvestigatorCount()
+    {
+        return investigatorStates.size();
     }
 
     InvestigatorListListener investigatorListListener;

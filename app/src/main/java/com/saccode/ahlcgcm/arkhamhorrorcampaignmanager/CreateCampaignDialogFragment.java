@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.GameData.CampaignInfo;
 import com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.GameData.GameData;
 
 import java.util.List;
@@ -24,7 +25,7 @@ import java.util.List;
 public class CreateCampaignDialogFragment extends DialogFragment implements AdapterView.OnItemSelectedListener {
 
     public interface CreateCampaignDialogListener {
-        public void onCreateCampaignDialogPositiveClick(DialogFragment dialog, CharSequence campaignName, CharSequence customName);
+        public void onCreateCampaignDialogPositiveClick(DialogFragment dialog, CharSequence name, CampaignInfo campaignInfo);
         public void onCreateCampaignDialogNegativeClick(DialogFragment dialog);
     }
 
@@ -82,7 +83,7 @@ public class CreateCampaignDialogFragment extends DialogFragment implements Adap
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 TextView textView = (TextView) ((AlertDialog) dialog).findViewById(R.id.campaign_name_field);
-                listener.onCreateCampaignDialogPositiveClick(CreateCampaignDialogFragment.this, GameData.getInstance().getCampaignName(selectedCampaign), textView.getText());
+                listener.onCreateCampaignDialogPositiveClick(CreateCampaignDialogFragment.this, textView.getText(), GameData.getInstance().getCampaignInfo(selectedCampaign));
             }
         });
         return builder.create();

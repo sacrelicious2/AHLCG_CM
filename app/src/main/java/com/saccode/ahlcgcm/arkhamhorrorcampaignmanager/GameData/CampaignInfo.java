@@ -11,6 +11,7 @@ public class CampaignInfo {
     public String id;
     public String name;
     public String introText;
+    public ArrayList<String> campaignLogLists;
     public ArrayList<ScenarioInfo> scenarios;
 
     public List<String> getScenarioNames()
@@ -21,5 +22,14 @@ public class CampaignInfo {
             names.add(info.name);
         }
         return names;
+    }
+
+    public CharSequence getCampaignLogName(int index)
+    {
+        if (index < campaignLogLists.size())
+        {
+            return campaignLogLists.get(index);
+        }
+        return "**INVALID CAMPAIGN LOG LIST**";
     }
 }

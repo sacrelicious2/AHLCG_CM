@@ -35,7 +35,7 @@ public class CampaignListAdapter extends ArrayAdapter<CampaignState>
 
         TextView customNameView = (TextView) convertView.findViewById(R.id.customName);
         TextView campaignNameView = (TextView) convertView.findViewById(R.id.campaignName);
-        customNameView.setText(campaignState.getCustomName());
+        customNameView.setText(campaignState.getName());
         campaignNameView.setText(campaignState.getCampaignName());
         return convertView;
     }

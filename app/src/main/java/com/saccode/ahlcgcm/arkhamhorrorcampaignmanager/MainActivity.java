@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.GameData.CampaignInfo;
 import com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.GameData.GameData;
 import com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.SaveData.CampaignState;
 import com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.SaveData.SaveData;
@@ -34,9 +35,9 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public void onCreateCampaignDialogPositiveClick(DialogFragment dialog, CharSequence campaignName, CharSequence customName)
+    public void onCreateCampaignDialogPositiveClick(DialogFragment dialog, CharSequence campaignName, CampaignInfo campaignInfo)
     {
-        int campaignIndex = SaveData.getInstance().addCampaign(new CampaignState(campaignName, customName));
+        int campaignIndex = SaveData.getInstance().addCampaign(new CampaignState(campaignName, campaignInfo));
         startCampaignActivity(campaignIndex);
     }
 

@@ -96,6 +96,15 @@ public class GameData {
         return null;
     }
 
+    public CampaignInfo getCampaignInfo(int index)
+    {
+        if (index < campaigns.size())
+        {
+            return campaigns.get(index);
+        }
+        return null;
+    }
+
     public CharSequence getCampaignName(int iCampaign)
     {
         if (iCampaign < campaigns.size())
