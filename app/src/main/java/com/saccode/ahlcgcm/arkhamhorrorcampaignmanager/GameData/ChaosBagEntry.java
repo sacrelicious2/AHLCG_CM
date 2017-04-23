@@ -17,16 +17,16 @@ public class ChaosBagEntry {
         return count;
     }
 
-    public void setCount(int count) {
-        this.count = count;
-    }
 
-
-    public void setCount(int count) {
-        this.count = count;
+    public int getCount() {
+        return count;
     }
 
     private String token;
+
+    public void setCount(int count) {
+        this.count = count;
+    }
 
     @Override
     public ChaosBagEntry clone() {
