@@ -64,7 +64,7 @@ public class AddInvestigatorDialogFragment extends DialogFragment implements Ada
         TextView textView = (TextView) view.findViewById(R.id.player_name);
 
         Spinner campaignSelectSpinner = (Spinner) view.findViewById(R.id.investigator_spinner);
-        campaignSelectSpinner.setAdapter(new ArrayAdapter<String>(view.getContext(), android.R.layout.simple_spinner_item, GameData.getInstance().getInvestigatorNames()));
+        campaignSelectSpinner.setAdapter(new ArrayAdapter<CharSequence>(view.getContext(), android.R.layout.simple_spinner_item, GameData.getInstance().getInvestigatorNames()));
         campaignSelectSpinner.setOnItemSelectedListener(this);
 
         builder.setView(view);

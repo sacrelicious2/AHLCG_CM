@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.GameData.GameData;
 import com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.SaveData.CampaignState;
 import com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.SaveData.SaveData;
 
@@ -50,6 +51,8 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        GameData.createInstance(getResources());
 
         FloatingActionButton fabCreateCampaign = (FloatingActionButton) findViewById(R.id.fabCreateCampaign);
         fabCreateCampaign.setOnClickListener(new View.OnClickListener() {

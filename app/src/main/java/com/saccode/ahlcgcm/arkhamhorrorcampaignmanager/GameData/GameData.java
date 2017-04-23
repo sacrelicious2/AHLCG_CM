@@ -1,5 +1,12 @@
 package com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.GameData;
 
+import android.content.res.Resources;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.R;
+
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,47 +15,62 @@ import java.util.List;
  */
 
 public class GameData {
-    public ArrayList<String> investigatorNames;
-    public ArrayList<CampaignInfo> campaigns;
-    public ArrayList<ScenarioInfo> standaloneScenarios;
-    public ArrayList<String> globalCampaignLogOptions;
+    public ArrayList<InvestigatorInfo> getInvestigators() {
+        return investigators;
+    }
+
+    public void setInvestigators(ArrayList<InvestigatorInfo> investigators) {
+        this.investigators = investigators;
+    }
+
+    public ArrayList<CampaignInfo> getCampaigns() {
+        return campaigns;
+    }
+
+    public void setCampaigns(ArrayList<CampaignInfo> campaigns) {
+        this.campaigns = campaigns;
+    }
+
+    public ArrayList<ScenarioInfo> getStandaloneScenarios() {
+        return standaloneScenarios;
+    }
+
+    public void setStandaloneScenarios(ArrayList<ScenarioInfo> standaloneScenarios) {
+        this.standaloneScenarios = standaloneScenarios;
+    }
+
+    public ArrayList<String> getGlobalCampaignLogOptions() {
+        return globalCampaignLogOptions;
+    }
+
+    public void setGlobalCampaignLogOptions(ArrayList<String> globalCampaignLogOptions) {
+        this.globalCampaignLogOptions = globalCampaignLogOptions;
+    }
+
+    private ArrayList<InvestigatorInfo> investigators;
+    private ArrayList<CampaignInfo> campaigns;
+    private ArrayList<ScenarioInfo> standaloneScenarios;
+    private ArrayList<String> globalCampaignLogOptions;
 
     private GameData()
     {
-        investigatorNames = new ArrayList<String>();
-        investigatorNames.add("\"Ashcan\" Pete");
-        investigatorNames.add("\"Skids\" O'Toole");
-        investigatorNames.add("Agnes Baker");
-        investigatorNames.add("Daisy Walker");
-        investigatorNames.add("Jenny Barnes");
-        investigatorNames.add("Jim Culver");
-        investigatorNames.add("Marie Lambeau");
-        investigatorNames.add("Rex Murphy");
-        investigatorNames.add("Roland Banks");
-        investigatorNames.add("Wendy Adams");
-        investigatorNames.add("Zoey Samaras");
-        campaigns = new ArrayList<CampaignInfo>();
-        CampaignInfo NotZ = new CampaignInfo();
-        CampaignInfo TDL = new CampaignInfo();
-        CampaignInfo TPtC = new CampaignInfo();
-        NotZ.name = "Night of the Zealot";
-        TDL.name = "The Dunwich Legacy";
-        TPtC.name = "The Path to Carcosa";
-        campaigns.add(NotZ);
-        campaigns.add(TDL);
-        campaigns.add(TPtC);
-        standaloneScenarios = new ArrayList<ScenarioInfo>();
-        globalCampaignLogOptions = new ArrayList<String>();
+        investigators = new ArrayList<>();
+        campaigns = new ArrayList<>();
+        standaloneScenarios = new ArrayList<>();
+        globalCampaignLogOptions = new ArrayList<>();
     }
 
     private static GameData instance = null;
 
+    static public void createInstance(Resources resources)
+    {
+        InputStreamReader reader = new InputStreamReader(resources.openRawResource(R.raw.game_data));
+        Gson gson = new GsonBuilder().create();
+        instance = gson.fromJson(reader, GameData.class);
+    }
+
     static public GameData getInstance()
     {
-        if (instance == null)
-        {
-            instance = new GameData();
-        }
         return instance;
     }
 
@@ -83,16 +105,21 @@ public class GameData {
         return "**Invalid**";
     }
 
-    public List<String> getInvestigatorNames()
+    public List<CharSequence> getInvestigatorNames()
     {
-        return investigatorNames;
+        List<CharSequence> names = new ArrayList<CharSequence>();
+        for (InvestigatorInfo info : investigators)
+        {
+            names.add(info.name);
+        }
+        return names;
     }
 
     public CharSequence getInvestigatorName(int index)
     {
-        if (index < investigatorNames.size())
+        if (index < investigators.size())
         {
-            return investigatorNames.get(index);
+            return investigators.get(index).name;
         }
         return "**INVALID INVESTIGATOR**";
     }

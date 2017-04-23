@@ -1,0 +1,161 @@
+{
+  "investigators": [
+    {
+      "name": "Roland Banks",
+      "archetype": "The Fed",
+      "id": "01001",
+      "class": "Guardian"
+    },
+    {
+      "name": "Daisy Walker",
+      "archetype": "The Librarian",
+      "id": "01002",
+      "class": "Seeker"
+    },
+    {
+      "name": "\"Skids\" O'Toole",
+      "archetype": "The Ex-Con",
+      "id": "01003",
+      "class": "Rogue"
+    },
+    {
+      "name": "Agnes Baker",
+      "archetype": "The Waitress",
+      "id": "01004",
+      "class": "Mystic"
+    },
+    {
+      "name": "Wendy Adams",
+      "archetype": "The Urchin",
+      "id": "01005",
+      "class": "Survivor"
+    },
+    {
+      "name": "Zoey Samaras",
+      "archetype": "The Chef",
+      "id": "02001",
+      "class": "Guardian"
+    },
+    {
+      "name": "Rex Murphy",
+      "archetype": "The Reporter",
+      "id": "02002",
+      "class": "Seeker"
+    },
+    {
+      "name": "Jenny Barnes",
+      "archetype": "The Dilettante",
+      "id": "02003",
+      "class": "Rogue"
+    },
+    {
+      "name": "Jim Culver",
+      "archetype": "The Musician",
+      "id": "02004",
+      "class": "Mystic"
+    },
+    {
+      "name": "\"Ashcan\" Pete",
+      "archetype": "The Drifter",
+      "id": "02005",
+      "class": "Survivor"
+    },
+    {
+      "name": "Marie Lambeau",
+      "archetype": "The Entertainer",
+      "id": "99001",
+      "class": "Mystic"
+    }
+  ],
+  "campaigns": [
+    {
+      "id": "NotZ",
+      "name": "Night of the Zealot",
+      "introText:" : "",
+      "scenarios" : [
+        {
+          "id": "NotZ1",
+          "name": "The Gathering",
+          "xpCost": 0,
+          "introText": [],
+          "resolutions": []
+        },
+        {
+          "id": "NotZ2",
+          "name": "The Midnight Masks",
+          "xpCost": 0,
+          "introText": [],
+          "resolutions": []
+        },
+        {
+          "id": "NotZ3",
+          "name": "The Devourer Below",
+          "xpCost": 0,
+          "introText": [],
+          "resolutions": []
+        }
+      ]
+    },
+    {
+      "id": "TDL",
+      "name": "The Dunwich Legacy",
+      "introText:" : "",
+      "scenarios": [
+        {
+          "id": "TDL1A",
+          "name": "Extracurricular Activity",
+          "xpCost": 0,
+          "introText": [],
+          "resolutions": []
+        },
+        {
+          "id": "TDL1B",
+          "name": "The House Always Wins",
+          "xpCost": 0,
+          "introText": [],
+          "resolutions": []
+        },
+        {
+          "id": "TDL2",
+          "name": "The Miskatonic Museum",
+          "xpCost": 0,
+          "introText": [],
+          "resolutions": []
+        },
+        {
+          "id": "TDL3",
+          "name": "The Essex County Express",
+          "xpCost": 0,
+          "introText": [],
+          "resolutions": []
+        },
+        {
+          "id": "TDL4",
+          "name": "Blood on the Altar",
+          "xpCost": 0,
+          "introText": [],
+          "resolutions": []
+        }
+      ]
+    }
+  ],
+  "standaloneScenarios": [
+    {
+      "id": "CotR",
+      "name": "Curse of the Rougarou",
+      "xpCost": 1,
+      "introText": [],
+      "resolutions": []
+    },
+    {
+      "id": "CoH",
+      "name": "Carnevale of Horrors",
+      "xpCost": 0,
+      "introText": [],
+      "resolutions": []
+    }
+  ],
+  "globalCampaignLogOptions": [
+    "You have identified the solution."
+  ]
+}

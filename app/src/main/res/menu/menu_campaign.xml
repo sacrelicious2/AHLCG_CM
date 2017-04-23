@@ -3,8 +3,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/rename_campaign"
+        android:title="Rename Campaign" />
+    <item
         android:id="@+id/add_investigator_menu_item"
-        android:title="Add Investigator" />
+        android:title="Add Investigator" ></item>
     <item
         android:id="@+id/start_scenario_menu_item"
         android:title="Start Scenario" />
