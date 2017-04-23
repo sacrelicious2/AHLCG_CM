@@ -1,6 +1,7 @@
 package com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.SaveData;
 
 import com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.GameData.CampaignInfo;
+import com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.GameData.GameData;
 
 import java.util.ArrayList;
 
@@ -15,12 +16,13 @@ public class CampaignState {
         public void onUpdateInvestigatorList();
     }
 
-    public CampaignState(CharSequence campaignName, CampaignInfo campaignInfo)
+    public CampaignState(CharSequence campaignName, CharSequence campaignId)
     {
         this.name = campaignName.toString();
-        this.campaignInfo = campaignInfo;
+        this.campaignId = campaignId.toString();
         investigatorStates = new ArrayList<>();
         campaignLogLists = new ArrayList<>();
+        CampaignInfo campaignInfo = getCampaignInfo();
         for (int iCampaignLogList = 0; iCampaignLogList < campaignInfo.campaignLogLists.size(); ++iCampaignLogList)
         {
             campaignLogLists.add(new ArrayList<String>());
@@ -49,10 +51,12 @@ public class CampaignState {
         return name;
     }
 
-    public CharSequence getCampaignName() {return campaignInfo.name;}
+    public CampaignInfo getCampaignInfo() {return GameData.getInstance().getCampaignInfo(campaignId);}
+
+    public CharSequence getCampaignName() {return getCampaignInfo().name;}
 
     private String name;
-    private CampaignInfo campaignInfo;
+    private String campaignId;
     private ArrayList<InvestigatorState> investigatorStates;
     private ArrayList<ArrayList<String>> campaignLogLists;
 
@@ -62,7 +66,7 @@ public class CampaignState {
 
     public int getCampaignLogListCount()
     {
-        return campaignInfo.campaignLogLists.size();
+        return getCampaignInfo().campaignLogLists.size();
     }
 
     public int getCampaignLogListSize(int index)
@@ -89,6 +93,7 @@ public class CampaignState {
 
     public CharSequence getCampaignLogName(int logIndex)
     {
+        CampaignInfo campaignInfo = getCampaignInfo();
         if (logIndex < campaignInfo.campaignLogLists.size())
         {
             return campaignInfo.campaignLogLists.get(logIndex);

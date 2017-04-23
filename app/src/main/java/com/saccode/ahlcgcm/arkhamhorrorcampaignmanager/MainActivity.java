@@ -35,9 +35,9 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public void onCreateCampaignDialogPositiveClick(DialogFragment dialog, CharSequence campaignName, CampaignInfo campaignInfo)
+    public void onCreateCampaignDialogPositiveClick(DialogFragment dialog, CharSequence campaignName, CharSequence campaignId)
     {
-        int campaignIndex = SaveData.getInstance().addCampaign(new CampaignState(campaignName, campaignInfo));
+        int campaignIndex = SaveData.getInstance().addCampaign(new CampaignState(campaignName, campaignId));
         startCampaignActivity(campaignIndex);
     }
 

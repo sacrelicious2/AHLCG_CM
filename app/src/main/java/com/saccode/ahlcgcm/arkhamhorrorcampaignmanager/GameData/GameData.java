@@ -84,11 +84,11 @@ public class GameData {
         return names;
     }
 
-    public CampaignInfo getCampaignInfo(CharSequence campaignName)
+    public CampaignInfo getCampaignInfo(CharSequence campaignId)
     {
         for (CampaignInfo info : campaigns)
         {
-            if (info.name == campaignName)
+            if (info.id == campaignId)
             {
                 return info;
             }

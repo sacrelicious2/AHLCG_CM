@@ -25,7 +25,7 @@ import java.util.List;
 public class CreateCampaignDialogFragment extends DialogFragment implements AdapterView.OnItemSelectedListener {
 
     public interface CreateCampaignDialogListener {
-        public void onCreateCampaignDialogPositiveClick(DialogFragment dialog, CharSequence name, CampaignInfo campaignInfo);
+        public void onCreateCampaignDialogPositiveClick(DialogFragment dialog, CharSequence name, CharSequence campaignId);
         public void onCreateCampaignDialogNegativeClick(DialogFragment dialog);
     }
 
@@ -83,7 +83,7 @@ public class CreateCampaignDialogFragment extends DialogFragment implements Adap
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 TextView textView = (TextView) ((AlertDialog) dialog).findViewById(R.id.campaign_name_field);
-                listener.onCreateCampaignDialogPositiveClick(CreateCampaignDialogFragment.this, textView.getText(), GameData.getInstance().getCampaignInfo(selectedCampaign));
+                listener.onCreateCampaignDialogPositiveClick(CreateCampaignDialogFragment.this, textView.getText(), GameData.getInstance().getCampaignInfo(selectedCampaign).id);
             }
         });
         return builder.create();
