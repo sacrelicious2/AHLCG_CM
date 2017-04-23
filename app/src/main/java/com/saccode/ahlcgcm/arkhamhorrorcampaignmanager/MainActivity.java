@@ -18,8 +18,7 @@ import com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.SaveData.CampaignState;
 import com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.SaveData.SaveData;
 
 public class MainActivity extends AppCompatActivity
-        implements CreateCampaignDialogFragment.CreateCampaignDialogListener
-{
+        implements CreateCampaignDialogFragment.CreateCampaignDialogListener {
     private CampaignListAdapter campaignListAdapter;
 
     public void showCreateCampaignDialog() {
@@ -27,16 +26,14 @@ public class MainActivity extends AppCompatActivity
         dialog.show(getFragmentManager(), "CreateCampaignDialogFragment");
     }
 
-    private void startCampaignActivity(int campaignIndex)
-    {
+    private void startCampaignActivity(int campaignIndex) {
         Intent intent = new Intent(this, CampaignActivity.class);
         intent.putExtra(CampaignActivity.CAMPAIGN_INDEX, campaignIndex);
         startActivity(intent);
     }
 
     @Override
-    public void onCreateCampaignDialogPositiveClick(DialogFragment dialog, CharSequence campaignName, CharSequence campaignId, int difficultyIndex)
-    {
+    public void onCreateCampaignDialogPositiveClick(DialogFragment dialog, CharSequence campaignName, CharSequence campaignId, int difficultyIndex) {
         int campaignIndex = SaveData.getInstance().addCampaign(new CampaignState(campaignName, campaignId, difficultyIndex));
         startCampaignActivity(campaignIndex);
     }

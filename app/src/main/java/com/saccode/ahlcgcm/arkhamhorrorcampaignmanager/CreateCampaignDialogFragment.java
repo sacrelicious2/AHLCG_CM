@@ -29,8 +29,7 @@ public class CreateCampaignDialogFragment extends DialogFragment implements Adap
     private Spinner difficultySelectSpinner;
 
     @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id)
-    {
+    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
         if (parent.getId() == R.id.campaign_select_spinner) {
             selectedCampaign = pos;
 
@@ -48,8 +47,7 @@ public class CreateCampaignDialogFragment extends DialogFragment implements Adap
     }
 
     @Override
-    public void onAttach(Context context)
-    {
+    public void onAttach(Context context) {
         super.onAttach(context);
         try {
             listener = (CreateCampaignDialogListener) context;
@@ -59,8 +57,7 @@ public class CreateCampaignDialogFragment extends DialogFragment implements Adap
     }
 
     @Override
-    public Dialog onCreateDialog(Bundle savedInstanceState)
-    {
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
         selectedCampaign = 0;
         selectedDifficulty = 0;
 

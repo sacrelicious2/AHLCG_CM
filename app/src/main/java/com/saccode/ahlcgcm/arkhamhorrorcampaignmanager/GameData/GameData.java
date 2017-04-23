@@ -71,60 +71,47 @@ public class GameData {
         this.globalCampaignLogOptions = globalCampaignLogOptions;
     }
 
-    public List<CharSequence> getCampaignNames()
-    {
+    public List<CharSequence> getCampaignNames() {
         List<CharSequence> names = new ArrayList<CharSequence>();
-        for (CampaignInfo info : campaigns)
-        {
+        for (CampaignInfo info : campaigns) {
             names.add(info.name);
         }
         return names;
     }
 
-    public CampaignInfo getCampaignInfo(CharSequence campaignId)
-    {
-        for (CampaignInfo info : campaigns)
-        {
-            if (Objects.equals(info.id, campaignId))
-            {
+    public CampaignInfo getCampaignInfo(CharSequence campaignId) {
+        for (CampaignInfo info : campaigns) {
+            if (Objects.equals(info.id, campaignId)) {
                 return info;
             }
         }
         return null;
     }
 
-    public CampaignInfo getCampaignInfo(int index)
-    {
-        if (index < campaigns.size())
-        {
+    public CampaignInfo getCampaignInfo(int index) {
+        if (index < campaigns.size()) {
             return campaigns.get(index);
         }
         return null;
     }
 
-    public CharSequence getCampaignName(int iCampaign)
-    {
-        if (iCampaign < campaigns.size())
-        {
+    public CharSequence getCampaignName(int iCampaign) {
+        if (iCampaign < campaigns.size()) {
             return campaigns.get(iCampaign).name;
         }
         return "**INVALID CAMPAIGN**";
     }
 
-    public List<CharSequence> getInvestigatorNames()
-    {
+    public List<CharSequence> getInvestigatorNames() {
         List<CharSequence> names = new ArrayList<CharSequence>();
-        for (InvestigatorInfo info : investigators)
-        {
+        for (InvestigatorInfo info : investigators) {
             names.add(info.name);
         }
         return names;
     }
 
-    public CharSequence getInvestigatorName(int index)
-    {
-        if (index < investigators.size())
-        {
+    public CharSequence getInvestigatorName(int index) {
+        if (index < investigators.size()) {
             return investigators.get(index).name;
         }
         return "**INVALID INVESTIGATOR**";

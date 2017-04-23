@@ -15,20 +15,16 @@ public class CampaignInfo {
     public ArrayList<ScenarioInfo> scenarios;
     public ArrayList<ChaosBagDifficulty> initChaosBags;
 
-    public List<String> getScenarioNames()
-    {
+    public List<String> getScenarioNames() {
         List<String> names = new ArrayList<String>();
-        for (ScenarioInfo info : scenarios)
-        {
+        for (ScenarioInfo info : scenarios) {
             names.add(info.name);
         }
         return names;
     }
 
-    public CharSequence getCampaignLogName(int index)
-    {
-        if (index < campaignLogLists.size())
-        {
+    public CharSequence getCampaignLogName(int index) {
+        if (index < campaignLogLists.size()) {
             return campaignLogLists.get(index);
         }
         return "**INVALID CAMPAIGN LOG LIST**";

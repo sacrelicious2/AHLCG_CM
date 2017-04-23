@@ -13,8 +13,7 @@ import com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.SaveData.CampaignState;
 import com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.SaveData.SaveData;
 
 public class CampaignActivity extends AppCompatActivity
-    implements AddInvestigatorDialogFragment.AddInvestigatorDialogListener
-{
+        implements AddInvestigatorDialogFragment.AddInvestigatorDialogListener {
     public static final String CAMPAIGN_INDEX = "com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.CAMPAIGN_INDEX";
 
     private CampaignState mCurrentCampaignState;
@@ -30,8 +29,7 @@ public class CampaignActivity extends AppCompatActivity
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_campaign);
 
@@ -41,8 +39,7 @@ public class CampaignActivity extends AppCompatActivity
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
-        if (mCurrentCampaignState != null)
-        {
+        if (mCurrentCampaignState != null) {
             toolbar.setTitle(mCurrentCampaignState.getName());
             toolbar.setSubtitle(String.format("%1$s - %2$s", mCurrentCampaignState.getCampaignName(), mCurrentCampaignState.getDifficulty()));
         }

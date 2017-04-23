@@ -17,19 +17,15 @@ import java.util.ArrayList;
  */
 
 public class CampaignListAdapter extends ArrayAdapter<CampaignState>
-    implements SaveData.UpdateCampaignListListener
-{
-    public CampaignListAdapter(Context context, ArrayList<CampaignState> campaigns)
-    {
+        implements SaveData.UpdateCampaignListListener {
+    public CampaignListAdapter(Context context, ArrayList<CampaignState> campaigns) {
         super(context, 0, campaigns);
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent)
-    {
+    public View getView(int position, View convertView, ViewGroup parent) {
         CampaignState campaignState = getItem(position);
-        if (convertView == null)
-        {
+        if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.campaign_list_item, parent, false);
         }
 

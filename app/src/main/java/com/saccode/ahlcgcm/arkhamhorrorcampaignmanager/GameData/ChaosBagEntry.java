@@ -5,6 +5,14 @@ package com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.GameData;
  */
 
 public class ChaosBagEntry {
+    private String token;
+    private int count;
+
+    public ChaosBagEntry(ChaosBagEntry entry) {
+        token = entry.token;
+        count = entry.count;
+    }
+
     public String getToken() {
         return token;
     }
@@ -17,19 +25,7 @@ public class ChaosBagEntry {
         return count;
     }
 
-    private String token;
-
     public void setCount(int count) {
         this.count = count;
     }
-
-    @Override
-    public ChaosBagEntry clone() {
-        ChaosBagEntry result = new ChaosBagEntry();
-        result.setCount(getCount());
-        result.setToken(getToken());
-        return result;
-    }
-
-    private int count;
 }

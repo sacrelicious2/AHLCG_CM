@@ -21,39 +21,34 @@ public class CampaignState {
     private ArrayList<ChaosBagEntry> chaosBag;
     private String difficulty;
 
-    public CampaignState(CharSequence campaignName, CharSequence campaignId, int difficultyIndex)
-    {
+    public CampaignState(CharSequence campaignName, CharSequence campaignId, int difficultyIndex) {
         this.name = campaignName.toString();
         this.campaignId = campaignId.toString();
         investigatorStates = new ArrayList<>();
         campaignLogLists = new ArrayList<>();
         CampaignInfo campaignInfo = getCampaignInfo();
-        for (int iCampaignLogList = 0; iCampaignLogList < campaignInfo.campaignLogLists.size(); ++iCampaignLogList)
-        {
+        for (int iCampaignLogList = 0; iCampaignLogList < campaignInfo.campaignLogLists.size(); ++iCampaignLogList) {
             campaignLogLists.add(new ArrayList<String>());
         }
         ChaosBagDifficulty initChaosBag = campaignInfo.getChaosBagInfo(difficultyIndex);
         difficulty = initChaosBag.getDifficulty();
         chaosBag = new ArrayList<>();
         for (ChaosBagEntry entry : initChaosBag.getContents()) {
-            chaosBag.add(entry.clone());
+            chaosBag.add(new ChaosBagEntry(entry));
         }
     }
 
-    public void addInvestigator(CharSequence investigatorName, CharSequence playerName)
-    {
+    public void addInvestigator(CharSequence investigatorName, CharSequence playerName) {
         investigatorStates.add(new InvestigatorState(investigatorName, playerName));
         investigatorListListener.onUpdateInvestigatorList();
     }
 
-    public ArrayList<InvestigatorState> getInvestigatorStates(){
+    public ArrayList<InvestigatorState> getInvestigatorStates() {
         return investigatorStates;
     }
 
-    public InvestigatorState getInvestigatorState(int index)
-    {
-        if (index < investigatorStates.size())
-        {
+    public InvestigatorState getInvestigatorState(int index) {
+        if (index < investigatorStates.size()) {
             return investigatorStates.get(index);
         }
         return null;
@@ -63,46 +58,42 @@ public class CampaignState {
         return name;
     }
 
-    public CampaignInfo getCampaignInfo() {return GameData.getInstance().getCampaignInfo(campaignId);}
+    public CampaignInfo getCampaignInfo() {
+        return GameData.getInstance().getCampaignInfo(campaignId);
+    }
 
-    public CharSequence getCampaignName() {return getCampaignInfo().name;}
+    public CharSequence getCampaignName() {
+        return getCampaignInfo().name;
+    }
 
     public void setInvestigatorListListener(InvestigatorListListener investigatorListListener) {
         this.investigatorListListener = investigatorListListener;
     }
 
-    public int getCampaignLogListCount()
-    {
+    public int getCampaignLogListCount() {
         return getCampaignInfo().campaignLogLists.size();
     }
 
-    public int getCampaignLogListSize(int index)
-    {
-        if (index < campaignLogLists.size())
-        {
+    public int getCampaignLogListSize(int index) {
+        if (index < campaignLogLists.size()) {
             return campaignLogLists.get(index).size();
         }
         return 0;
     }
 
-    public CharSequence getCampaignLogEvent(int logIndex, int eventIndex)
-    {
-        if (logIndex < campaignLogLists.size())
-        {
+    public CharSequence getCampaignLogEvent(int logIndex, int eventIndex) {
+        if (logIndex < campaignLogLists.size()) {
             ArrayList<String> log = campaignLogLists.get(logIndex);
-            if (eventIndex < log.size())
-            {
+            if (eventIndex < log.size()) {
                 return log.get(eventIndex);
             }
         }
         return null;
     }
 
-    public CharSequence getCampaignLogName(int logIndex)
-    {
+    public CharSequence getCampaignLogName(int logIndex) {
         CampaignInfo campaignInfo = getCampaignInfo();
-        if (logIndex < campaignInfo.campaignLogLists.size())
-        {
+        if (logIndex < campaignInfo.campaignLogLists.size()) {
             return campaignInfo.campaignLogLists.get(logIndex);
         }
         return "**INVALID CAMPAIGN LOG NAME**";
@@ -123,8 +114,7 @@ public class CampaignState {
         return null;
     }
 
-    public int getInvestigatorCount()
-    {
+    public int getInvestigatorCount() {
         return investigatorStates.size();
     }
 

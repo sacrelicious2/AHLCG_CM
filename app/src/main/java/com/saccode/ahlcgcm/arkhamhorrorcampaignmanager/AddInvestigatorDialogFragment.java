@@ -21,12 +21,6 @@ import com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.GameData.GameData;
 
 public class AddInvestigatorDialogFragment extends DialogFragment implements AdapterView.OnItemSelectedListener {
 
-    public interface AddInvestigatorDialogListener {
-        public void onAddInvestigatorDialogPositiveClick(DialogFragment dialog, CharSequence playerName, CharSequence characterName);
-
-        public void onAddInvestigatorDialogNegativeClick(DialogFragment dialog);
-    }
-
     private AddInvestigatorDialogListener addInvestigatorDialogListener;
     private int selectedInvestigator;
 
@@ -39,7 +33,6 @@ public class AddInvestigatorDialogFragment extends DialogFragment implements Ada
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
-
 
     @Override
     public void onAttach(Context context) {
@@ -84,5 +77,11 @@ public class AddInvestigatorDialogFragment extends DialogFragment implements Ada
         });
         return builder.create();
 
+    }
+
+    public interface AddInvestigatorDialogListener {
+        void onAddInvestigatorDialogPositiveClick(DialogFragment dialog, CharSequence playerName, CharSequence characterName);
+
+        void onAddInvestigatorDialogNegativeClick(DialogFragment dialog);
     }
 }

@@ -16,8 +16,7 @@ import com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.SaveData.InvestigatorStat
  */
 
 public class CampaignStateAdapter extends BaseExpandableListAdapter
-    implements CampaignState.InvestigatorListListener
-{
+        implements CampaignState.InvestigatorListListener {
     private static final int INVESTIGATOR_GROUP = 0;
     private static final int COMPLETED_SCENARIO_GROUP = 1;
     private static final int CHAOS_BAG_GROUP = 2;
@@ -33,18 +32,13 @@ public class CampaignStateAdapter extends BaseExpandableListAdapter
 
     @Override
     public int getChildrenCount(int groupPosition) {
-        if (groupPosition == INVESTIGATOR_GROUP)
-        {
+        if (groupPosition == INVESTIGATOR_GROUP) {
             return campaignState.getInvestigatorCount();
-        }
-        else if (groupPosition == COMPLETED_SCENARIO_GROUP)
-        {
+        } else if (groupPosition == COMPLETED_SCENARIO_GROUP) {
             return 0; //TODO : Implement
         } else if (groupPosition == CHAOS_BAG_GROUP) {
             return campaignState.getChaosBagListCount();
-        }
-        else
-        {
+        } else {
             return campaignState.getCampaignLogListSize(groupPosition - CAMPAIGN_LOG_START_GROUP);
         }
     }
@@ -56,18 +50,13 @@ public class CampaignStateAdapter extends BaseExpandableListAdapter
 
     @Override
     public Object getChild(int groupPosition, int childPosition) {
-        if (groupPosition == INVESTIGATOR_GROUP)
-        {
+        if (groupPosition == INVESTIGATOR_GROUP) {
             return campaignState.getInvestigatorState(childPosition);
-        }
-        else if (groupPosition == COMPLETED_SCENARIO_GROUP)
-        {
+        } else if (groupPosition == COMPLETED_SCENARIO_GROUP) {
             return null;
         } else if (groupPosition == CHAOS_BAG_GROUP) {
             return campaignState.getChaosBagEntry(childPosition);
-        }
-        else
-        {
+        } else {
             return campaignState.getCampaignLogEvent(groupPosition - CAMPAIGN_LOG_START_GROUP, childPosition);
         }
     }
@@ -89,8 +78,7 @@ public class CampaignStateAdapter extends BaseExpandableListAdapter
 
     @Override
     public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
-        if (groupPosition == INVESTIGATOR_GROUP)
-        {
+        if (groupPosition == INVESTIGATOR_GROUP) {
             convertView = LayoutInflater.from(context).inflate(R.layout.investigator_list_header, parent, false);
             int numInvestigators = campaignState.getInvestigatorCount();
             String resourceString = parent.getResources().getString(R.string.investigators);
@@ -98,17 +86,13 @@ public class CampaignStateAdapter extends BaseExpandableListAdapter
             TextView investigatorHeaderView = (TextView) convertView.findViewById(R.id.investigator_list_header_textview);
             investigatorHeaderView.setText(text);
             return convertView;
-        }
-        else if (groupPosition == COMPLETED_SCENARIO_GROUP)
-        {
+        } else if (groupPosition == COMPLETED_SCENARIO_GROUP) {
             convertView = LayoutInflater.from(context).inflate(R.layout.completed_scenario_list_header, parent, false);
             return convertView;
         } else if (groupPosition == CHAOS_BAG_GROUP) {
             convertView = LayoutInflater.from(context).inflate(R.layout.chaos_bag_header, parent, false);
             return convertView;
-        }
-        else
-        {
+        } else {
             convertView = LayoutInflater.from(context).inflate(R.layout.campaign_log_list_header, parent, false);
             TextView campaignLogHeaderView = (TextView) convertView.findViewById(R.id.campaign_log_name);
             int logIndex = groupPosition - CAMPAIGN_LOG_START_GROUP;
@@ -127,8 +111,7 @@ public class CampaignStateAdapter extends BaseExpandableListAdapter
 
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
-        if (groupPosition == INVESTIGATOR_GROUP)
-        {
+        if (groupPosition == INVESTIGATOR_GROUP) {
             convertView = LayoutInflater.from(context).inflate(R.layout.investigator_list_item, parent, false);
 
             InvestigatorState investigatorState = (InvestigatorState) getChild(groupPosition, childPosition);
@@ -138,9 +121,7 @@ public class CampaignStateAdapter extends BaseExpandableListAdapter
             playerNameView.setText(investigatorState.getPlayerName());
 
             return convertView;
-        }
-        else if (groupPosition == COMPLETED_SCENARIO_GROUP)
-        {
+        } else if (groupPosition == COMPLETED_SCENARIO_GROUP) {
             convertView = LayoutInflater.from(context).inflate(R.layout.completed_scenario_list_item, parent, false);
             return convertView;
         } else if (groupPosition == CHAOS_BAG_GROUP) {
@@ -151,9 +132,7 @@ public class CampaignStateAdapter extends BaseExpandableListAdapter
             chaosBagEntryView.setText(String.format("%1$s : %2$d", chaosBagEntry.getToken(), chaosBagEntry.getCount()));
 
             return convertView;
-        }
-        else
-        {
+        } else {
             convertView = LayoutInflater.from(context).inflate(R.layout.campaign_log_list_item, parent, false);
             CharSequence eventText = (CharSequence) getChild(groupPosition, childPosition);
             return convertView;
