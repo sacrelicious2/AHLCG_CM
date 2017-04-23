@@ -13,10 +13,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.GameData.CampaignInfo;
 import com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.GameData.GameData;
 
-import java.util.List;
+import junit.framework.Assert;
 
 /**
  * Created by Paul Burg on 4/21/2017.
@@ -24,18 +23,23 @@ import java.util.List;
 
 public class CreateCampaignDialogFragment extends DialogFragment implements AdapterView.OnItemSelectedListener {
 
-    public interface CreateCampaignDialogListener {
-        public void onCreateCampaignDialogPositiveClick(DialogFragment dialog, CharSequence name, CharSequence campaignId);
-        public void onCreateCampaignDialogNegativeClick(DialogFragment dialog);
-    }
-
     private CreateCampaignDialogListener listener;
     private int selectedCampaign;
+    private int selectedDifficulty;
+    private Spinner difficultySelectSpinner;
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id)
     {
-        selectedCampaign = pos;
+        if (parent.getId() == R.id.campaign_select_spinner) {
+            selectedCampaign = pos;
+
+            difficultySelectSpinner.setAdapter(new ArrayAdapter<CharSequence>(difficultySelectSpinner.getContext(), android.R.layout.simple_spinner_item, GameData.getInstance().getCampaignInfo(selectedCampaign).getDifficultNames()));
+        } else if (parent.getId() == R.id.difficulty_select_spinner) {
+            selectedDifficulty = pos;
+        } else {
+            Assert.fail("Unhandled view in onItemSelected");
+        }
     }
 
     @Override
@@ -58,6 +62,7 @@ public class CreateCampaignDialogFragment extends DialogFragment implements Adap
     public Dialog onCreateDialog(Bundle savedInstanceState)
     {
         selectedCampaign = 0;
+        selectedDifficulty = 0;
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle(R.string.create_campaign);
@@ -71,6 +76,10 @@ public class CreateCampaignDialogFragment extends DialogFragment implements Adap
         campaignSelectSpinner.setAdapter(new ArrayAdapter<CharSequence>(view.getContext(), android.R.layout.simple_spinner_item, GameData.getInstance().getCampaignNames()));
         campaignSelectSpinner.setOnItemSelectedListener(this);
 
+        difficultySelectSpinner = (Spinner) view.findViewById(R.id.difficulty_select_spinner);
+        difficultySelectSpinner.setAdapter(new ArrayAdapter<CharSequence>(view.getContext(), android.R.layout.simple_spinner_item, GameData.getInstance().getCampaignInfo(selectedCampaign).getDifficultNames()));
+        difficultySelectSpinner.setOnItemSelectedListener(this);
+
         builder.setView(view);
 
         builder.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
@@ -83,9 +92,15 @@ public class CreateCampaignDialogFragment extends DialogFragment implements Adap
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 TextView textView = (TextView) ((AlertDialog) dialog).findViewById(R.id.campaign_name_field);
-                listener.onCreateCampaignDialogPositiveClick(CreateCampaignDialogFragment.this, textView.getText(), GameData.getInstance().getCampaignInfo(selectedCampaign).id);
+                listener.onCreateCampaignDialogPositiveClick(CreateCampaignDialogFragment.this, textView.getText(), GameData.getInstance().getCampaignInfo(selectedCampaign).id, selectedDifficulty);
             }
         });
         return builder.create();
+    }
+
+    public interface CreateCampaignDialogListener {
+        void onCreateCampaignDialogPositiveClick(DialogFragment dialog, CharSequence name, CharSequence campaignId, int difficultyIndex);
+
+        void onCreateCampaignDialogNegativeClick(DialogFragment dialog);
     }
 }

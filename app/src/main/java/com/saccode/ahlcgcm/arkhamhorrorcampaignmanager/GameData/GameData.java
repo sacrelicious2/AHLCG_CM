@@ -9,12 +9,36 @@ import com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.R;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by Paul Burg on 4/21/2017.
  */
 
 public class GameData {
+    private static GameData instance = null;
+    private ArrayList<InvestigatorInfo> investigators;
+    private ArrayList<CampaignInfo> campaigns;
+    private ArrayList<ScenarioInfo> standaloneScenarios;
+    private ArrayList<String> globalCampaignLogOptions;
+
+    private GameData() {
+        investigators = new ArrayList<>();
+        campaigns = new ArrayList<>();
+        standaloneScenarios = new ArrayList<>();
+        globalCampaignLogOptions = new ArrayList<>();
+    }
+
+    static public void createInstance(Resources resources) {
+        InputStreamReader reader = new InputStreamReader(resources.openRawResource(R.raw.game_data));
+        Gson gson = new GsonBuilder().create();
+        instance = gson.fromJson(reader, GameData.class);
+    }
+
+    static public GameData getInstance() {
+        return instance;
+    }
+
     public ArrayList<InvestigatorInfo> getInvestigators() {
         return investigators;
     }
@@ -47,33 +71,6 @@ public class GameData {
         this.globalCampaignLogOptions = globalCampaignLogOptions;
     }
 
-    private ArrayList<InvestigatorInfo> investigators;
-    private ArrayList<CampaignInfo> campaigns;
-    private ArrayList<ScenarioInfo> standaloneScenarios;
-    private ArrayList<String> globalCampaignLogOptions;
-
-    private GameData()
-    {
-        investigators = new ArrayList<>();
-        campaigns = new ArrayList<>();
-        standaloneScenarios = new ArrayList<>();
-        globalCampaignLogOptions = new ArrayList<>();
-    }
-
-    private static GameData instance = null;
-
-    static public void createInstance(Resources resources)
-    {
-        InputStreamReader reader = new InputStreamReader(resources.openRawResource(R.raw.game_data));
-        Gson gson = new GsonBuilder().create();
-        instance = gson.fromJson(reader, GameData.class);
-    }
-
-    static public GameData getInstance()
-    {
-        return instance;
-    }
-
     public List<CharSequence> getCampaignNames()
     {
         List<CharSequence> names = new ArrayList<CharSequence>();
@@ -88,7 +85,7 @@ public class GameData {
     {
         for (CampaignInfo info : campaigns)
         {
-            if (info.id == campaignId)
+            if (Objects.equals(info.id, campaignId))
             {
                 return info;
             }
@@ -111,7 +108,7 @@ public class GameData {
         {
             return campaigns.get(iCampaign).name;
         }
-        return "**Invalid**";
+        return "**INVALID CAMPAIGN**";
     }
 
     public List<CharSequence> getInvestigatorNames()

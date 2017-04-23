@@ -77,6 +77,204 @@
         "Cultists We Interrogated",
         "Cultists Who Got Away"
       ],
+      "initChaosBags": [
+        {
+          "difficulty": "Easy",
+          "contents": [
+            {
+              "token": "+1",
+              "count": 2
+            },
+            {
+              "token": "0",
+              "count": 3
+            },
+            {
+              "token": "-1",
+              "count": 3
+            },
+            {
+              "token": "-2",
+              "count": 2
+            },
+            {
+              "token": "Skull",
+              "count": 2
+            },
+            {
+              "token": "Cultist",
+              "count": 1
+            },
+            {
+              "token": "Tablet",
+              "count": 1
+            },
+            {
+              "token": "Tentacles",
+              "count": 1
+            },
+            {
+              "token": "Elder Sign",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "difficulty": "Standard",
+          "contents": [
+            {
+              "token": "+1",
+              "count": 1
+            },
+            {
+              "token": "0",
+              "count": 2
+            },
+            {
+              "token": "-1",
+              "count": 3
+            },
+            {
+              "token": "-2",
+              "count": 2
+            },
+            {
+              "token": "-3",
+              "count": 1
+            },
+            {
+              "token": "-4",
+              "count": 1
+            },
+            {
+              "token": "Skull",
+              "count": 2
+            },
+            {
+              "token": "Cultist",
+              "count": 1
+            },
+            {
+              "token": "Tablet",
+              "count": 1
+            },
+            {
+              "token": "Tentacles",
+              "count": 1
+            },
+            {
+              "token": "Elder Sign",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "difficulty": "Hard",
+          "contents": [
+            {
+              "token": "0",
+              "count": 3
+            },
+            {
+              "token": "-1",
+              "count": 2
+            },
+            {
+              "token": "-2",
+              "count": 2
+            },
+            {
+              "token": "-3",
+              "count": 2
+            },
+            {
+              "token": "-4",
+              "count": 1
+            },
+            {
+              "token": "-5",
+              "count": 1
+            },
+            {
+              "token": "Skull",
+              "count": 2
+            },
+            {
+              "token": "Cultist",
+              "count": 1
+            },
+            {
+              "token": "Tablet",
+              "count": 1
+            },
+            {
+              "token": "Tentacles",
+              "count": 1
+            },
+            {
+              "token": "Elder Sign",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "difficulty": "Expert",
+          "contents": [
+            {
+              "token": "0",
+              "count": 1
+            },
+            {
+              "token": "-1",
+              "count": 2
+            },
+            {
+              "token": "-2",
+              "count": 2
+            },
+            {
+              "token": "-3",
+              "count": 2
+            },
+            {
+              "token": "-4",
+              "count": 2
+            },
+            {
+              "token": "-5",
+              "count": 1
+            },
+            {
+              "token": "-6",
+              "count": 1
+            },
+            {
+              "token": "-8",
+              "count": 1
+            },
+            {
+              "token": "Skull",
+              "count": 2
+            },
+            {
+              "token": "Cultist",
+              "count": 1
+            },
+            {
+              "token": "Tablet",
+              "count": 1
+            },
+            {
+              "token": "Tentacles",
+              "count": 1
+            },
+            {
+              "token": "Elder Sign",
+              "count": 1
+            }
+          ]
+        }
+      ],
       "scenarios" : [
         {
           "id": "NotZ1",
@@ -113,6 +311,188 @@
       "campaignLogLists": [
         "Campaign Notes",
         "Sacrificed to Yog-Sothoth"
+      ],
+      "initChaosBags": [
+        {
+          "difficulty": "Easy",
+          "contents": [
+            {
+              "token": "+1",
+              "count": 2
+            },
+            {
+              "token": "0",
+              "count": 3
+            },
+            {
+              "token": "-1",
+              "count": 3
+            },
+            {
+              "token": "-2",
+              "count": 2
+            },
+            {
+              "token": "Skull",
+              "count": 2
+            },
+            {
+              "token": "Cultist",
+              "count": 1
+            },
+            {
+              "token": "Tentacles",
+              "count": 1
+            },
+            {
+              "token": "Elder Sign",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "difficulty": "Standard",
+          "contents": [
+            {
+              "token": "+1",
+              "count": 1
+            },
+            {
+              "token": "0",
+              "count": 2
+            },
+            {
+              "token": "-1",
+              "count": 3
+            },
+            {
+              "token": "-2",
+              "count": 2
+            },
+            {
+              "token": "-3",
+              "count": 1
+            },
+            {
+              "token": "-4",
+              "count": 1
+            },
+            {
+              "token": "Skull",
+              "count": 2
+            },
+            {
+              "token": "Cultist",
+              "count": 1
+            },
+            {
+              "token": "Tentacles",
+              "count": 1
+            },
+            {
+              "token": "Elder Sign",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "difficulty": "Hard",
+          "contents": [
+            {
+              "token": "0",
+              "count": 3
+            },
+            {
+              "token": "-1",
+              "count": 2
+            },
+            {
+              "token": "-2",
+              "count": 2
+            },
+            {
+              "token": "-3",
+              "count": 2
+            },
+            {
+              "token": "-4",
+              "count": 1
+            },
+            {
+              "token": "-5",
+              "count": 1
+            },
+            {
+              "token": "Skull",
+              "count": 2
+            },
+            {
+              "token": "Cultist",
+              "count": 1
+            },
+            {
+              "token": "Tentacles",
+              "count": 1
+            },
+            {
+              "token": "Elder Sign",
+              "count": 1
+            }
+          ]
+        },
+        {
+          "difficulty": "Expert",
+          "contents": [
+            {
+              "token": "0",
+              "count": 1
+            },
+            {
+              "token": "-1",
+              "count": 2
+            },
+            {
+              "token": "-2",
+              "count": 2
+            },
+            {
+              "token": "-3",
+              "count": 2
+            },
+            {
+              "token": "-4",
+              "count": 2
+            },
+            {
+              "token": "-5",
+              "count": 1
+            },
+            {
+              "token": "-6",
+              "count": 1
+            },
+            {
+              "token": "-8",
+              "count": 1
+            },
+            {
+              "token": "Skull",
+              "count": 2
+            },
+            {
+              "token": "Cultist",
+              "count": 1
+            },
+            {
+              "token": "Tentacles",
+              "count": 1
+            },
+            {
+              "token": "Elder Sign",
+              "count": 1
+            }
+          ]
+        }
       ],
       "scenarios": [
         {

@@ -8,13 +8,11 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
-import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.GameData.CampaignInfo;
 import com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.GameData.GameData;
 import com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.SaveData.CampaignState;
 import com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.SaveData.SaveData;
@@ -22,6 +20,8 @@ import com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.SaveData.SaveData;
 public class MainActivity extends AppCompatActivity
         implements CreateCampaignDialogFragment.CreateCampaignDialogListener
 {
+    private CampaignListAdapter campaignListAdapter;
+
     public void showCreateCampaignDialog() {
         CreateCampaignDialogFragment dialog = new CreateCampaignDialogFragment();
         dialog.show(getFragmentManager(), "CreateCampaignDialogFragment");
@@ -35,9 +35,9 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
-    public void onCreateCampaignDialogPositiveClick(DialogFragment dialog, CharSequence campaignName, CharSequence campaignId)
+    public void onCreateCampaignDialogPositiveClick(DialogFragment dialog, CharSequence campaignName, CharSequence campaignId, int difficultyIndex)
     {
-        int campaignIndex = SaveData.getInstance().addCampaign(new CampaignState(campaignName, campaignId));
+        int campaignIndex = SaveData.getInstance().addCampaign(new CampaignState(campaignName, campaignId, difficultyIndex));
         startCampaignActivity(campaignIndex);
     }
 
@@ -45,6 +45,13 @@ public class MainActivity extends AppCompatActivity
     public void onCreateCampaignDialogNegativeClick(DialogFragment dialog) {
 
     }
+
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.menu_main, menu);
+//        return true;
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,13 +108,6 @@ public class MainActivity extends AppCompatActivity
         campaignListView.setAdapter(campaignListAdapter);
     }
 
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.menu_main, menu);
-//        return true;
-//    }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -122,6 +122,4 @@ public class MainActivity extends AppCompatActivity
 
         return super.onOptionsItemSelected(item);
     }
-
-    private CampaignListAdapter campaignListAdapter;
 }

@@ -13,6 +13,7 @@ public class CampaignInfo {
     public String introText;
     public ArrayList<String> campaignLogLists;
     public ArrayList<ScenarioInfo> scenarios;
+    public ArrayList<ChaosBagDifficulty> initChaosBags;
 
     public List<String> getScenarioNames()
     {
@@ -31,5 +32,20 @@ public class CampaignInfo {
             return campaignLogLists.get(index);
         }
         return "**INVALID CAMPAIGN LOG LIST**";
+    }
+
+    public ArrayList<CharSequence> getDifficultNames() {
+        ArrayList<CharSequence> names = new ArrayList<>();
+        for (ChaosBagDifficulty chaosBagDifficulty : initChaosBags) {
+            names.add(chaosBagDifficulty.getDifficulty());
+        }
+        return names;
+    }
+
+    public ChaosBagDifficulty getChaosBagInfo(int difficultIndex) {
+        if (difficultIndex < initChaosBags.size()) {
+            return initChaosBags.get(difficultIndex);
+        }
+        return null;
     }
 }

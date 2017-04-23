@@ -1,6 +1,8 @@
 package com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.SaveData;
 
 import com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.GameData.CampaignInfo;
+import com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.GameData.ChaosBagDifficulty;
+import com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.GameData.ChaosBagEntry;
 import com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.GameData.GameData;
 
 import java.util.ArrayList;
@@ -11,12 +13,15 @@ import java.util.ArrayList;
 
 public class CampaignState {
 
-    public interface InvestigatorListListener
-    {
-        public void onUpdateInvestigatorList();
-    }
+    InvestigatorListListener investigatorListListener;
+    private String name;
+    private String campaignId;
+    private ArrayList<InvestigatorState> investigatorStates;
+    private ArrayList<ArrayList<String>> campaignLogLists;
+    private ArrayList<ChaosBagEntry> chaosBag;
+    private String difficulty;
 
-    public CampaignState(CharSequence campaignName, CharSequence campaignId)
+    public CampaignState(CharSequence campaignName, CharSequence campaignId, int difficultyIndex)
     {
         this.name = campaignName.toString();
         this.campaignId = campaignId.toString();
@@ -26,6 +31,12 @@ public class CampaignState {
         for (int iCampaignLogList = 0; iCampaignLogList < campaignInfo.campaignLogLists.size(); ++iCampaignLogList)
         {
             campaignLogLists.add(new ArrayList<String>());
+        }
+        ChaosBagDifficulty initChaosBag = campaignInfo.getChaosBagInfo(difficultyIndex);
+        difficulty = initChaosBag.getDifficulty();
+        chaosBag = new ArrayList<>();
+        for (ChaosBagEntry entry : initChaosBag.getContents()) {
+            chaosBag.add(entry.clone());
         }
     }
 
@@ -38,6 +49,7 @@ public class CampaignState {
     public ArrayList<InvestigatorState> getInvestigatorStates(){
         return investigatorStates;
     }
+
     public InvestigatorState getInvestigatorState(int index)
     {
         if (index < investigatorStates.size())
@@ -54,11 +66,6 @@ public class CampaignState {
     public CampaignInfo getCampaignInfo() {return GameData.getInstance().getCampaignInfo(campaignId);}
 
     public CharSequence getCampaignName() {return getCampaignInfo().name;}
-
-    private String name;
-    private String campaignId;
-    private ArrayList<InvestigatorState> investigatorStates;
-    private ArrayList<ArrayList<String>> campaignLogLists;
 
     public void setInvestigatorListListener(InvestigatorListListener investigatorListListener) {
         this.investigatorListListener = investigatorListListener;
@@ -101,11 +108,28 @@ public class CampaignState {
         return "**INVALID CAMPAIGN LOG NAME**";
     }
 
+    public String getDifficulty() {
+        return difficulty;
+    }
+
+    public int getChaosBagListCount() {
+        return chaosBag.size();
+    }
+
+    public ChaosBagEntry getChaosBagEntry(int index) {
+        if (index < chaosBag.size()) {
+            return chaosBag.get(index);
+        }
+        return null;
+    }
+
     public int getInvestigatorCount()
     {
         return investigatorStates.size();
     }
 
-    InvestigatorListListener investigatorListListener;
+    public interface InvestigatorListListener {
+        void onUpdateInvestigatorList();
+    }
 
 }

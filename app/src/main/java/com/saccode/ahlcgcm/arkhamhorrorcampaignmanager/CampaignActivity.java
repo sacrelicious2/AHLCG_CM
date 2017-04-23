@@ -44,7 +44,7 @@ public class CampaignActivity extends AppCompatActivity
         if (mCurrentCampaignState != null)
         {
             toolbar.setTitle(mCurrentCampaignState.getName());
-            toolbar.setSubtitle(mCurrentCampaignState.getCampaignName());
+            toolbar.setSubtitle(String.format("%1$s - %2$s", mCurrentCampaignState.getCampaignName(), mCurrentCampaignState.getDifficulty()));
         }
 
         setSupportActionBar(toolbar);
