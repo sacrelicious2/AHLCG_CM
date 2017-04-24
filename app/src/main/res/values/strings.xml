@@ -8,4 +8,5 @@
     <string name="investigators">Investigators</string>
     <string name="completed_scenarios">Completed Scenarios</string>
     <string name="chaos_bag">Chaos Bag</string>
+    <string name="start_scenario">Start Scenario</string>
 </resources>

@@ -280,6 +280,15 @@
           "id": "NotZ1",
           "name": "The Gathering",
           "xpCost": 0,
+          "prerequisites" : [
+            {
+              "type" : "ConditionNot",
+              "condition" : {
+                "type" : "ConditionHasCompletedScenario",
+                "scenarioId" : "NotZ1"
+              }
+            }
+          ],
           "introText": [
             {
               "conditions": [],
@@ -292,6 +301,19 @@
           "id": "NotZ2",
           "name": "The Midnight Masks",
           "xpCost": 0,
+          "prerequisites" : [
+            {
+              "type" : "ConditionNot",
+              "condition" : {
+                "type" : "ConditionHasCompletedScenario",
+                "scenarioId" : "NotZ2"
+              }
+            },
+            {
+              "type" : "ConditionHasCompletedScenario",
+              "scenarioId": "NotZ1"
+            }
+          ],
           "introText": [],
           "resolutions": []
         },
@@ -299,6 +321,19 @@
           "id": "NotZ3",
           "name": "The Devourer Below",
           "xpCost": 0,
+          "prerequisites" : [
+            {
+              "type" : "ConditionNot",
+              "condition" : {
+                "type" : "ConditionHasCompletedScenario",
+                "scenarioId" : "NotZ3"
+              }
+            },
+            {
+              "type" : "ConditionHasCompletedScenario",
+              "scenarioId": "NotZ2"
+            }
+          ],
           "introText": [],
           "resolutions": []
         }
@@ -499,6 +534,15 @@
           "id": "TDL1A",
           "name": "Extracurricular Activity",
           "xpCost": 0,
+          "prerequisites" : [
+            {
+              "type" : "ConditionNot",
+              "condition" : {
+                "type" : "ConditionHasCompletedScenario",
+                "scenarioId" : "TDL1A"
+              }
+            }
+          ],
           "introText": [],
           "resolutions": []
         },
@@ -506,6 +550,15 @@
           "id": "TDL1B",
           "name": "The House Always Wins",
           "xpCost": 0,
+          "prerequisites" : [
+            {
+              "type" : "ConditionNot",
+              "condition" : {
+                "type" : "ConditionHasCompletedScenario",
+                "scenarioId" : "TDL1B"
+              }
+            }
+          ],
           "introText": [],
           "resolutions": []
         },
@@ -513,6 +566,23 @@
           "id": "TDL2",
           "name": "The Miskatonic Museum",
           "xpCost": 0,
+          "prerequisites" : [
+            {
+              "type" : "ConditionNot",
+              "condition" : {
+                "type" : "ConditionHasCompletedScenario",
+                "scenarioId" : "TDL2"
+              }
+            },
+            {
+              "type" : "ConditionHasCompletedScenario",
+              "scenarioId": "TDL1A"
+            },
+            {
+              "type" : "ConditionHasCompletedScenario",
+              "scenarioId": "TDL1B"
+            }
+          ],
           "introText": [],
           "resolutions": []
         },
@@ -520,6 +590,19 @@
           "id": "TDL3",
           "name": "The Essex County Express",
           "xpCost": 0,
+          "prerequisites" : [
+            {
+              "type" : "ConditionNot",
+              "condition" : {
+                "type" : "ConditionHasCompletedScenario",
+                "scenarioId" : "TDL3"
+              }
+            },
+            {
+              "type" : "ConditionHasCompletedScenario",
+              "scenarioId": "TDL2"
+            }
+          ],
           "introText": [],
           "resolutions": []
         },
@@ -527,6 +610,19 @@
           "id": "TDL4",
           "name": "Blood on the Altar",
           "xpCost": 0,
+          "prerequisites" : [
+            {
+              "type" : "ConditionNot",
+              "condition" : {
+                "type" : "ConditionHasCompletedScenario",
+                "scenarioId" : "TDL4"
+              }
+            },
+            {
+              "type" : "ConditionHasCompletedScenario",
+              "scenarioId": "TDL3"
+            }
+          ],
           "introText": [],
           "resolutions": []
         }
@@ -538,13 +634,31 @@
       "id": "CotR",
       "name": "Curse of the Rougarou",
       "xpCost": 1,
+      "prerequisites" : [
+        {
+          "type" : "ConditionNot",
+          "condition" : {
+            "type" : "ConditionHasCompletedScenario",
+            "scenarioId" : "CotR"
+          }
+        }
+      ],
       "introText": [],
       "resolutions": []
     },
     {
       "id": "CoH",
       "name": "Carnevale of Horrors",
-      "xpCost": 0,
+      "xpCost": 3,
+      "prerequisites" : [
+        {
+          "type" : "ConditionNot",
+          "condition" : {
+            "type" : "ConditionHasCompletedScenario",
+            "scenarioId" : "CoH"
+          }
+        }
+      ],
       "introText": [],
       "resolutions": []
     }

@@ -14,6 +14,10 @@ public abstract class BaseCondition {
 
     static {
         registerClass(ConditionCampaignLogContains.type, ConditionCampaignLogContains.class);
+        registerClass(ConditionHasCompletedScenario.type, ConditionHasCompletedScenario.class);
+        registerClass(ConditionNot.type, ConditionNot.class);
+        registerClass(ConditionAnd.type, ConditionAnd.class);
+        registerClass(ConditionOr.type, ConditionOr.class);
     }
 
     protected static void registerClass(String className, Class classType) {

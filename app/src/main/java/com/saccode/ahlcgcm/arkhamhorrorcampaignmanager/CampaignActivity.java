@@ -16,11 +16,11 @@ public class CampaignActivity extends AppCompatActivity
         implements AddInvestigatorDialogFragment.AddInvestigatorDialogListener {
     public static final String CAMPAIGN_INDEX = "com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.CAMPAIGN_INDEX";
 
-    private CampaignState mCurrentCampaignState;
+    private CampaignState campaignState;
 
     @Override
     public void onAddInvestigatorDialogPositiveClick(DialogFragment dialog, CharSequence playerName, CharSequence characterName) {
-        mCurrentCampaignState.addInvestigator(characterName, playerName);
+        campaignState.addInvestigator(characterName, playerName);
     }
 
     @Override
@@ -35,20 +35,20 @@ public class CampaignActivity extends AppCompatActivity
 
         Intent intent = getIntent();
         int campaignIndex = intent.getIntExtra(CAMPAIGN_INDEX, -1);
-        mCurrentCampaignState = SaveData.getInstance().getCampaignState(campaignIndex);
+        campaignState = SaveData.getInstance().getCampaignState(campaignIndex);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
-        if (mCurrentCampaignState != null) {
-            toolbar.setTitle(mCurrentCampaignState.getName());
-            toolbar.setSubtitle(String.format("%1$s - %2$s", mCurrentCampaignState.getCampaignName(), mCurrentCampaignState.getDifficulty()));
+        if (campaignState != null) {
+            toolbar.setTitle(campaignState.getName());
+            toolbar.setSubtitle(String.format("%1$s - %2$s", campaignState.getCampaignName(), campaignState.getDifficulty()));
         }
 
         setSupportActionBar(toolbar);
 
         ExpandableListView investigatorsListView = (ExpandableListView) findViewById(R.id.campaign_list_view);
-        CampaignStateAdapter investigatorListAdapter = new CampaignStateAdapter(this, mCurrentCampaignState);
-        mCurrentCampaignState.setInvestigatorListListener(investigatorListAdapter);
+        CampaignStateAdapter investigatorListAdapter = new CampaignStateAdapter(this, campaignState);
+        campaignState.setInvestigatorListListener(investigatorListAdapter);
         investigatorsListView.setAdapter(investigatorListAdapter);
 
     }
@@ -57,12 +57,22 @@ public class CampaignActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_campaign, menu);
-        MenuItem menuItem = menu.findItem(R.id.add_investigator_menu_item);
-        menuItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+        MenuItem addInvestigatorMenuItem = menu.findItem(R.id.add_investigator_menu_item);
+        addInvestigatorMenuItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 AddInvestigatorDialogFragment dialogFragment = new AddInvestigatorDialogFragment();
                 dialogFragment.show(getFragmentManager(), "AddInvestigatorDialogFragment");
+                return true;
+            }
+        });
+        MenuItem startScenarioMenuItem = menu.findItem(R.id.start_scenario_menu_item);
+        startScenarioMenuItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                StartScenarioDialogFragment dialogFragment = new StartScenarioDialogFragment();
+                dialogFragment.setCampaignState(campaignState);
+                dialogFragment.show(getFragmentManager(), "StartScenarioDialogFragment");
                 return true;
             }
         });

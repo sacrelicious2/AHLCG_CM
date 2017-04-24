@@ -3,7 +3,9 @@ package com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.SaveData;
 import com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.GameData.CampaignInfo;
 import com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.GameData.ChaosBagDifficulty;
 import com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.GameData.ChaosBagEntry;
+import com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.GameData.Conditions.BaseCondition;
 import com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.GameData.GameData;
+import com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.GameData.ScenarioInfo;
 
 import java.util.ArrayList;
 
@@ -19,7 +21,9 @@ public class CampaignState {
     private ArrayList<InvestigatorState> investigatorStates;
     private ArrayList<ArrayList<String>> campaignLogLists;
     private ArrayList<ChaosBagEntry> chaosBag;
+    private ArrayList<ScenarioState> completedScenarios;
     private String difficulty;
+    private ScenarioState activeScenario;
 
     public CampaignState(CharSequence campaignName, CharSequence campaignId, int difficultyIndex) {
         this.name = campaignName.toString();
@@ -36,6 +40,7 @@ public class CampaignState {
         for (ChaosBagEntry entry : initChaosBag.getContents()) {
             chaosBag.add(new ChaosBagEntry(entry));
         }
+        completedScenarios = new ArrayList<>();
     }
 
     public void addInvestigator(CharSequence investigatorName, CharSequence playerName) {
@@ -128,8 +133,44 @@ public class CampaignState {
         }
     }
 
+    public ArrayList<InvestigatorState> getAvailableInvestigators() {
+        return investigatorStates;
+    }
+
+    public boolean isScenarioAvailable(ScenarioInfo scenarioInfo) {
+        for (BaseCondition condition : scenarioInfo.prerequisites) {
+            if (!condition.evaluate(this)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public ArrayList<ScenarioInfo> getAvailableScenarios() {
+        ArrayList<ScenarioInfo> availableScenarios = new ArrayList<>();
+        for (ScenarioInfo scenarioInfo : getCampaignInfo().scenarios) {
+            if (isScenarioAvailable(scenarioInfo)) {
+                availableScenarios.add(scenarioInfo);
+            }
+        }
+        for (ScenarioInfo scenarioInfo : GameData.getInstance().getStandaloneScenarios()) {
+            if (isScenarioAvailable(scenarioInfo)) {
+                availableScenarios.add(scenarioInfo);
+            }
+        }
+        return availableScenarios;
+    }
+
+    public boolean isScenarioCompleted(String scenarioId) {
+        for (ScenarioState scenarioState : completedScenarios) {
+            if (scenarioState.getScenarioId().equals(scenarioId)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public interface InvestigatorListListener {
         void onUpdateInvestigatorList();
     }
-
 }
