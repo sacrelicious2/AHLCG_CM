@@ -12,6 +12,10 @@ import java.util.HashMap;
 public abstract class BaseCondition {
     private static HashMap<String, Class> conditionTypeMap = new HashMap<>();
 
+    static {
+        registerClass(ConditionCampaignLogContains.type, ConditionCampaignLogContains.class);
+    }
+
     protected static void registerClass(String className, Class classType) {
         conditionTypeMap.put(className, classType);
     }

@@ -10,10 +10,6 @@ public class ConditionCampaignLogContains extends BaseCondition {
 
     public static final String type = "ConditionCampaignLogContains";
 
-    static {
-        BaseCondition.registerClass(type, ConditionCampaignLogContains.class);
-    }
-
     private String log;
     private String entry;
 
