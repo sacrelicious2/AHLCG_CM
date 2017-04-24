@@ -1,6 +1,7 @@
 package com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.GameData;
 
-import com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.GameData.Conditions.Condition;
+import com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.GameData.Actions.BaseAction;
+import com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.GameData.Conditions.BaseCondition;
 
 import java.util.ArrayList;
 
@@ -9,6 +10,6 @@ import java.util.ArrayList;
  */
 
 public class ConditionalAction {
-    public ArrayList<Condition> condition;
-    public com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.GameData.Actions.Action action;
+    public ArrayList<BaseCondition> condition;
+    public BaseAction action;
 }

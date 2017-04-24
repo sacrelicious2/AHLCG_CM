@@ -118,6 +118,16 @@ public class CampaignState {
         return investigatorStates.size();
     }
 
+    public boolean doesCampaignLogContain(String log, String entry) {
+        CampaignInfo campaignInfo = getCampaignInfo();
+        int logIndex = campaignInfo.campaignLogLists.indexOf(log);
+        if (logIndex >= 0 && logIndex < campaignLogLists.size()) {
+            return campaignLogLists.get(logIndex).contains(entry);
+        } else {
+            return false;
+        }
+    }
+
     public interface InvestigatorListListener {
         void onUpdateInvestigatorList();
     }

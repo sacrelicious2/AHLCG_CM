@@ -1,6 +1,6 @@
 package com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.GameData;
 
-import com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.GameData.Conditions.Condition;
+import com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.GameData.Conditions.BaseCondition;
 
 import java.util.ArrayList;
 
@@ -12,7 +12,7 @@ public class ScenarioInfo {
     public String id;
     public String name;
     public Integer xpCost;
-    public ArrayList<Condition> prerequisites;
+    public ArrayList<BaseCondition> prerequisites;
     public ArrayList<ConditionalText> introText;
     public ArrayList<ScenarioResolution> resolutions;
 }

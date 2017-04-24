@@ -1,6 +1,6 @@
 package com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.GameData;
 
-import com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.GameData.Conditions.Condition;
+import com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.GameData.Conditions.BaseCondition;
 
 import java.util.ArrayList;
 
@@ -9,6 +9,6 @@ import java.util.ArrayList;
  */
 
 public class ConditionalText {
-    public ArrayList<Condition> conditions;
+    public ArrayList<BaseCondition> conditions;
     public String text;
 }

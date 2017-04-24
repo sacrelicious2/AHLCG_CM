@@ -4,6 +4,8 @@ import android.content.res.Resources;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.GameData.Actions.BaseAction;
+import com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.GameData.Conditions.BaseCondition;
 import com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.R;
 
 import java.io.InputStreamReader;
@@ -31,7 +33,10 @@ public class GameData {
 
     static public void createInstance(Resources resources) {
         InputStreamReader reader = new InputStreamReader(resources.openRawResource(R.raw.game_data));
-        Gson gson = new GsonBuilder().create();
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapterFactory(BaseCondition.getFactory())
+                .registerTypeAdapterFactory(BaseAction.getFactory())
+                .create();
         instance = gson.fromJson(reader, GameData.class);
     }
 
