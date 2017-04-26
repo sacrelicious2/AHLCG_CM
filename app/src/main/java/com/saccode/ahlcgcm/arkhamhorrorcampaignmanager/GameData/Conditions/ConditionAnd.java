@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * Created by Paul Burg on 4/23/2017.
  */
 
-public class ConditionAnd extends BaseCondition {
+class ConditionAnd extends BaseCondition {
     public static final String type = "ConditionAnd";
     private ArrayList<BaseCondition> conditions;
 

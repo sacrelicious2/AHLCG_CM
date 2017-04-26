@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         GameData.createInstance(getResources());
+        SaveData.createInstance(getApplicationContext());
 
         FloatingActionButton fabCreateCampaign = (FloatingActionButton) findViewById(R.id.fabCreateCampaign);
         fabCreateCampaign.setOnClickListener(new View.OnClickListener() {

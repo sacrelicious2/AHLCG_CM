@@ -15,7 +15,7 @@ import java.util.ArrayList;
 
 public class CampaignState {
 
-    InvestigatorListListener investigatorListListener;
+    private transient InvestigatorListListener investigatorListListener;
     private String name;
     private String campaignId;
     private ArrayList<InvestigatorState> investigatorStates;

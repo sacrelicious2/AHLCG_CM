@@ -6,7 +6,7 @@ import com.saccode.ahlcgcm.arkhamhorrorcampaignmanager.SaveData.CampaignState;
  * Created by Paul Burg on 4/23/2017.
  */
 
-public class ConditionNot extends BaseCondition {
+class ConditionNot extends BaseCondition {
     public static final String type = "ConditionNot";
     private BaseCondition condition;
 
